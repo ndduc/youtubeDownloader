@@ -1,5 +1,5 @@
 let Btn = document.getElementById('btn');
-let URLinput = document.querySelector('.URL-input');
+let URLinput = document.querySelector('.inputURL');
 let select = document.querySelector('.opt');
 let serverURL = 'http://localhost:4000';
 
@@ -29,12 +29,14 @@ function redirectMp4(query) {
 
 
 function xmlhttpConnetion(url) {
+    var name = document.getElementById('idName').value;
+    console.log(name);
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
         }
     };
-    xmlhttp.open("GET", "phpfunction/file_to_server.php?action=mp3&u="  + url, true);
+    xmlhttp.open("GET", "phpfunction/file_to_server.php?action=mp3&u="  + url+ "&t=" + name, true);
     xmlhttp.send();
 }
