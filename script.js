@@ -16,9 +16,25 @@ Btn.addEventListener('click', () => {
 });
 
 function redirectMp3(query) {
-	window.location.href = `${serverURL}/downloadmp3?url=${query}`;
+    var url = `${serverURL}/downloadmp3?url=${query}`;
+        console.log(url);
+        xmlhttpConnetion(`${serverURL}/downloadmp3?url=${query}`);
+        
+	//window.location.href = `${serverURL}/downloadmp3?url=${query}`;
 }
 
 function redirectMp4(query) {
 	window.location.href = `${serverURL}/downloadmp4?url=${query}`;
+}
+
+
+function xmlhttpConnetion(url) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText);
+        }
+    };
+    xmlhttp.open("GET", "phpfunction/file_to_server.php?action=mp3&u="  + url, true);
+    xmlhttp.send();
 }
