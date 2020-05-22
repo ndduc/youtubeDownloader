@@ -1,10 +1,12 @@
 <?php 
     // Initialize a file URL to the variable 
+    $path = 'J:\Framework\laragon\www\leeleelookupphp\youtubeDownloader\youtubeDownloader\Audio';
+
     $_url = !empty($_GET['u'])?$_GET['u']:'-';
     $title = !empty($_GET['t'])?$_GET['t']:'-';
     $caller = !empty($_GET['action'])?$_GET['action']:'-';
     class file_to_server{
-        function download($url, $tit) {
+        function download($url, $tit, $path) {
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_setopt($ch, CURLOPT_NOBODY, 0);
@@ -16,7 +18,7 @@
             curl_close($ch);
             if ($status == 200) {
                 //file_put_contents(dirname(__FILE__) . '/audio7.mp3', $output);
-                $path = 'C:/xampp/htdocs/leeleelookupphp/youtubeDownloader/Audio';
+               // $path = 'C:/xampp/htdocs/leeleelookupphp/youtubeDownloader/Audio';
                
                 $name = '/'.$tit.'.mp3';
                 $full = $path.$name;
@@ -32,7 +34,7 @@
     
     if($caller=="mp3") {
         $action_class = new file_to_server();
-        $action_class->download($_url, $title);
+        $action_class->download($_url, $title, $path);
     }
    
 ?> 
