@@ -16,7 +16,7 @@
             curl_close($ch);
             if ($status == 200) {
                 //file_put_contents(dirname(__FILE__) . '/audio7.mp3', $output);
-                $path = 'C:/xampp/htdocs/leeleelookupphp/youtubeDownloader/Audio';
+                $path = 'C:\xampp\htdocs\leeleelookupphp\youtubeDownloader\Audio';
                
                 $name = '/'.$tit.'.mp3';
                 $full = $path.$name;
