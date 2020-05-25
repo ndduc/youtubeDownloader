@@ -8,14 +8,8 @@ Btn.addEventListener('click', () => {
 		alert('Enter YouTube URL');
 	} else {
 		if (select.value == 'mp3') {
-			
-			
-
-
 			redirectMp3(URLinput.value);
-		} else if (select.value == 'mp4') {
-			redirectMp4(URLinput.value);
-		}
+		} 
 	}
 });
 
@@ -27,19 +21,12 @@ function redirectMp3(query) {
 	  console.log(p);
 	  val = p[1];
 	}
-	console.log(val);
-			
-			
+	//console.log(val);	
     var url = `${serverURL}/downloadmp3?url=${val}`;
-        console.log(url);
+        //console.log(url);
         xmlhttpConnetion(`${serverURL}/downloadmp3?url=${val}`);
-        
-	//window.location.href = `${serverURL}/downloadmp3?url=${query}`;
 }
 
-function redirectMp4(query) {
-	window.location.href = `${serverURL}/downloadmp4?url=${query}`;
-}
 
 
 function xmlhttpConnetion(url) {

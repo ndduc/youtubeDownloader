@@ -50,22 +50,3 @@ app.get('/downloadmp3', async (req, res, next) => {
 	}
 });
 
-app.get('/downloadmp4', async (req, res, next) => {
-	try {
-		let URL = req.query.url;
-		let title = 'video';
-
-		await ytdl.getBasicInfo(URL, {
-			format: 'mp4'
-		}, (err, info) => {
-			title = info.player_response.videoDetails.title;
-		});
-
-		res.header('Content-Disposition', `attachment; filename="${title}.mp4"`);
-		ytdl(URL, {
-			format: 'mp4',
-		}).pipe(res);
-	} catch (err) {
-		console.error(err);
-	}
-});
